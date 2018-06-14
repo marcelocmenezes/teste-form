@@ -14,9 +14,15 @@ $(".next").click(function(){
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 	
+	current_fs.hide(400);
+
 	//show the next fieldset
-	next_fs.show(); 
+	next_fs.show(400); 
 	//hide the current fieldset with style
+
+	animating = false;
+
+	/*
 	current_fs.animate({opacity: 0}, {
 		step: function(now, mx) {
 			//as the opacity of current_fs reduces to 0 - stored in "now"
@@ -26,20 +32,20 @@ $(".next").click(function(){
 			left = (now * 50)+"%";
 			//3. increase opacity of next_fs to 1 as it moves in
 			opacity = 1 - now;
-			current_fs.css({
-        'transform': 'scale('+scale+')',
-        'position': 'absolute'
-      });
-			next_fs.css({'left': left, 'opacity': opacity});
+			//current_fs.css({'transform': 'scale('+scale+')','position': 'absolute'});
+			next_fs.css({'opacity': opacity});
 		}, 
-		duration: 800, 
+		duration: 400, 
 		complete: function(){
 			current_fs.hide();
 			animating = false;
 		}, 
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
-	});
+	});*/
+
+
+
 });
 
 $(".previous").click(function(){
@@ -53,28 +59,35 @@ $(".previous").click(function(){
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 	
 	//show the previous fieldset
-	previous_fs.show(); 
+
+	current_fs.hide(400)
+	previous_fs.show(400);
+
+	animating = false;
+
+	
 	//hide the current fieldset with style
+	/*
 	current_fs.animate({opacity: 0}, {
 		step: function(now, mx) {
 			//as the opacity of current_fs reduces to 0 - stored in "now"
 			//1. scale previous_fs from 80% to 100%
-			scale = 0.8 + (1 - now) * 0.2;
+			scale = 1 + (1 - now) * 0.2;
 			//2. take current_fs to the right(50%) - from 0%
 			left = ((1-now) * 50)+"%";
 			//3. increase opacity of previous_fs to 1 as it moves in
 			opacity = 1 - now;
-			current_fs.css({'left': left});
-			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+			//current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale(1)', 'opacity': opacity});
 		}, 
-		duration: 800, 
+		duration: 400, 
 		complete: function(){
 			current_fs.hide();
 			animating = false;
 		}, 
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
-	});
+	});*/
 });
 
 $(".submit").click(function(){
